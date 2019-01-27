@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 #define SIZE 10
 
 typedef struct {
@@ -41,21 +42,60 @@ void init(Stack *sp) {
 
 
 int main() {
-  Stack s1, s2;
-  init(&s1);
-  init(&s2);
+  Stack s1;
+  int choice, value;
 
-  push(&s1, 100);
-  push(&s1, 200);
+//Menu
+  printf("1 - Push\n");
+  printf("2 - Pop\n");
+  printf("3 - Exit\n");
 
-  push(&s2, 10);
-  push(&s2, 20);
+  while (1) {
+    printf("Enter choice: ");
+    scanf("%d", &choice );
+    switch (choice) {
 
-  printf("Deleted from s1 : %d\n", pop(&s1)); //200
-  printf("Deleted from s1 : %d\n", pop(&s1)); //100
+      case 1: printf("Enter value: ");
+      scanf("%d", &value);
+      push(&s1, value);
+      break;
 
-  printf("Deleted from s1 : %d\n", pop(&s2)); //20
-  printf("Deleted from s1 : %d\n", pop(&s2)); //10
+      case 2: value = pop(&s1);
+      if(value != -9999) {
+        printf("Popped data : %d\n", value);
+      }
+      break;
+
+      case 3: exit(0);
+      default: printf("Invalid choice\n");
+
+
+    }
+  }
+
+
+
+
+
+
+
+
+
+  // Stack s1, s2;
+  // init(&s1);
+  // init(&s2);
+  //
+  // push(&s1, 100);
+  // push(&s1, 200);
+  //
+  // push(&s2, 10);
+  // push(&s2, 20);
+  //
+  // printf("Deleted from s1 : %d\n", pop(&s1)); //200
+  // printf("Deleted from s1 : %d\n", pop(&s1)); //100
+  //
+  // printf("Deleted from s1 : %d\n", pop(&s2)); //20
+  // printf("Deleted from s1 : %d\n", pop(&s2)); //10
 
   return 0;
 }
